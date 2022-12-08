@@ -1,0 +1,44 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Livros' /}
+
+<div class="container">
+	<h1>Livros</h1>
+	
+	<form action="@{Livros.listar}">
+		<div class="row">
+			<div class="col-10">
+				<input style="width: 940px;" type="text" name="termo" placeholder="Pesquise aqui" class="form-control" />
+			</div>
+			<input style="width: 130px; margin-left: 50px" type="submit" value="Pesquisar" class="link" />
+		</div>
+	</form>
+	
+	
+	<table class="table table-striped table-hover">
+		<thead>
+		 	<tr>
+	      		<th>Nome</th>
+	      		<th>Autor</th>
+	      		<th>Categoria</th>
+	      		<th>Ações</th>
+	      	</tr>
+		</thead>
+		<tbody>
+			#{list items: livros, as:'livro'}
+			<tr>
+	      		<td>${livro.nome}</td>
+	      		<td>${livro.autor}</td>
+	      		<td>${livro.categoria.id}</td>
+	      		<td>
+	      			<a href="@{Livros.detalhar(livro.id)}" class="link">DETALHAR</a>
+	      			<a href="@{Livros.editar(livro.id)}" class="link">EDITAR</a>
+	      			<a href="@{Livros.remover(livro.id)}" class="link">REMOVER</a>
+	      		</td>
+	      	</tr>
+	      	#{/list}
+		</tbody>
+	</table>
+	
+	<a href="@{Livros.cadastrar}" class="link">Novo Livro</a>
+	<a href="@{Principal.iniciar}" class="link">Voltar</a>
+</div>

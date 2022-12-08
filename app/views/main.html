@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/links.css'}">
+        <!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/Livro.png'}">
+    </head>
+    <body>
+       #{if session.get('usuario')}
+	    	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="#">Academico</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarNav">
+			      <ul class="navbar-nav">
+			        <li class="nav-item">
+			          <a class="nav-link active" aria-current="page" href="@{Usuarios.listar()}">Usuários</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="@{Livros.listar()}">Livros</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="@{Logins.sair()}">
+			          	Usuário: ${session.get('usuario')} <i class="bi bi-arrow-up-right-square"></i>
+			          </a>
+			        </li>
+			      </ul>
+			    </div>
+			  </div>
+			</nav>
+		#{/if}
+       
+       <div>
+	        	</br>
+	        	#{if flash.success}
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						${flash.success}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				#{/if}
+				
+				</br>
+				#{if flash.error}
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						${flash.error}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				#{/if}
+	        
+	        #{doLayout /}
+        </div>
+       
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </body>
+</html>

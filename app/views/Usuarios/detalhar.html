@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Detalhamento de Usuário' /}
+
+<div class="container">
+	<h3>${usuario.nome}</h3>
+	
+	<p>Nome: ${usuario.nome}</p>
+	<p>E-mail: ${usuario.email}</p>
+	<p>Senha: ${usuario.senha}</p>
+	
+	<a href="@{Usuarios.listar}" class="link">Lista</a>
+</div>

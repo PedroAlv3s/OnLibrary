@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title:'OnLib' /}
+
+<nav class="navegacao">
+	 <!-- LOGO -->
+	 <ul class="menu">
+		 <li>
+			 <p class="logo">
+				<div class="a">
+					<a style="text-decoration: none; color: white" href="#">
+						<img id="logoImagem" src="/public/images/Livro.png" alt="OnLib" />OnLib
+					</a>
+				</div>
+			 </p>
+		 </li>	 
+	 </ul>
+	 <!-- MENU DE NAVEGAÇÃO -->
+	 <ul class="links">
+		 <!-- USING CHECKBOX HACK -->
+		 <input type="checkbox" id="checkbox_toggle" />
+		 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+		 <!-- NAVIGATION MENUS -->
+		 <div class="menu">
+			 <li><a href="@{Livros.listar}">Livros</a></li>
+			 <li><a href="@{Logins.login}">Login</a></li>
+			 <li><a href="@{Usuarios.cadastrar}">Cadastrar</a></li>
+		 </div>
+	 </ul>
+</nav>
+
+<div class="container">
+	<footer class="rodape">
+		<hr>
+		<h4>OnLib</h4>
+	</footer>
+</div>

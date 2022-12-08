@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'Detalhamento de Livros' /}
+
+<div class="container">
+	<h3>${livro.nome}</h3>
+	
+	<p>Nome: ${livro.nome}</p>
+	<p>Autor: ${livro.autor}</p>
+	<p>Autor: ${livro.categoria.id}</p>
+	<p>Publicação: ${livro.dataPublicacao.format('dd/MM/yyyy')}</p>
+	<p>Idioma: ${livro.idioma}</p>
+	<p>Páginas: ${livro.qtdPaginas}</p>
+
+	<a class="pdf" href="/public/files/JavaPOO.pdf" download>Baixar PDF</a>
+	<a href="@{Livros.listar}" class="link">Livros</a>
+</div>

@@ -1,0 +1,35 @@
+.pdf {
+	font-size: 16px;
+	background-color: rgb(255, 66, 104);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	border: 1px solid rgb(255, 66, 104);
+	border-left: 10px solid rgb(252, 115, 142);
+	transition: all 0.25s ease-in-out;
+}
+
+.pdf:hover {
+	color: rgb(255, 66, 104);
+	background-color: white;
+}
+
+.botao {
+	width: 350px;
+	height: 40px;
+	font-size: 16px;
+	background-color: rgb(15, 196, 91);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	border: 1px solid rgb(15, 196, 91);
+	transition: all 0.25s ease-in-out;
+	margin-top: 20px;
+}
+
+.botao:hover {
+	color: rgb(15, 196, 91);
+	background-color: white;
+}

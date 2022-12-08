@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Usuário' /}
+
+<div class="cadastro">
+	<br>
+	<h3 style="text-align: center">CADASTRO DE USUÁRIO</h3>
+	<br />
+	<form action="@{Usuarios.salvar}" method="post">
+		<input type="hidden" name="usuario.id" value="${usuario?.id}" /> 
+		
+		<input type="email" name="usuario.email" placeholder="E-mail"
+			value="${usuario?.email}" class="form-control" /> <br /> 
+		
+		<input type="password" name="usuario.senha" placeholder="Senha"
+			value="${usuario?.senha}" class="form-control" /> <br /> 
+		
+		<input type="text" name="usuario.nome" placeholder="Nome"
+			value="${usuario?.nome}" class="form-control" /> <br /> <br /> <br />
+		
+		<input type="submit" value="Salvar" class="link" /> 
+		<a href="@{Principal.iniciar}" class="link">Cancelar</a>
+	</form>
+</div>
