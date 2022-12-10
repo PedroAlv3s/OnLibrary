@@ -1,20 +1,10 @@
 #{extends 'main.html' /}
-#{set title:'Cadastro de Livro' /}
+#{set title:'Perfil' /}
 
-<div class="cadastro">
-	<br>
-	<h3>LIVRO</h3>
-	<br />
-	<hr>
-	<form action="@{Livros.salvar}" method="post">
-		<input type="hidden" name="livro.id" value="${livroo?.id}" /> 
-		<input type="text" name="livro.nome" placeholder="Nome"
-			value="${livro?.nome}" class="form-control" /> <br /> 
-		<input type="text" name="livro.categoria" placeholder="Categoria"
-			value="${livro?.categoria}" class="form-control" /> <br /> 
-		<input type="text" name="livro.autor" placeholder="Autor"
-			value="${livro?.autor}" class="form-control" /> <br /> <br /> <br />
-		<input type="submit" value="Salvar" class="btn btn-primary" /> 
-		<a class="btn btn-primary" href="@{Livros.iniciar}">Cancelar</a>
-	</form>
+<div class="perfil">
+	<h3>${session.get('usuario')}</h3>
+	
+	<input type="file" name="" />
+	<p>Nome: ${session.get('usuario')}</p>
+	<p>Você é um <b>${session.get('tipo')}</b></p
 </div>

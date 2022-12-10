@@ -21,7 +21,7 @@ public class Livro extends Model {
 	
 	public Categoria categoria;
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	public Date dataPublicacao;
 	
 	@Enumerated(EnumType.STRING)

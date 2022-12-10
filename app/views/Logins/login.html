@@ -1,21 +1,23 @@
 #{extends 'main.html' /}
-#{set title:'Login de Usuário' /}
+#{set title:'Login - OnLibrary' /}
 
 <div class="cadastro">
-	<br>
-	<h2>LOGIN</h2>
 	<br />
-	<form action="@{Logins.login}" method="post">
+	<h1>Login</h1>
+	<br />
+	<form action="@{Logins.logar}" method="post">
 		
-		<label>Nome de usuário</label>	
-		<input type="text" name="nome" class="campotexto" /> <br />
+		<input type="text" name="nome" placeholder="Nome" class="form-control" /> <br />
 		
-		<input type="password" name="senha" class="campotexto" /> <br /> 
+		<input type="password" name="senha" placeholder="Senha" class="form-control" /> <br /> 
 		
-		<input type="submit" value="Entrar" class="link" /> <br /> <br /> <br />
+		<input type="submit" value="Entrar" class="btn btn-primary" /> <br /> <br /> <br />
 		
-		<p style="font-size: 15px;">Novo na OnLib? Cadastre-se clicando
-			<a style="font-size: 15px; color: green" href="@{Usuarios.cadastrar}">aqui</a>
+		<p style="font-size: 15px; padding: 0px; margin: 0px;">Novo na OnLib? 
+			<a style="font-size: 15px; text-decoration: none;" href="@{Usuarios.cadastrar}">Crie sua conta.</a>
+		</p>
+		<p style="font-size: 15px; padding: 0px; margin: 0px;">Esqueceu sua senha? 
+			<a style="font-size: 15px; text-decoration: none;" href="#">Clique aqui.</a>
 		</p>
 	</form>
 </div>

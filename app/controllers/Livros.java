@@ -23,10 +23,10 @@ public class Livros extends Controller {
 	}
 
 	public static void salvar(Livro livro) {
-		long quantidade = Livro.count("lower(nome) = ?1 and status = ?2", livro.nome, Status.ativo);
+		long quantidade = Livro.count("nome = ?1 AND status = ?2", livro.nome, Status.ativo);
 		
 		if(quantidade == 0) {
-			livro.dataPublicacao = new Date();
+			//livro.dataPublicacao = new Date();
 			livro.save();
 			flash.success("Livro cadastrado com sucesso!");
 		} else {

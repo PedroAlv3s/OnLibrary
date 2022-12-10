@@ -2,8 +2,8 @@
 #{set title:'Cadastro de Usuário' /}
 
 <div class="cadastro">
-	<br>
-	<h3 style="text-align: center">CADASTRO DE USUÁRIO</h3>
+	<br />
+	<h1>Cadastro</h1>
 	<br />
 	<form action="@{Usuarios.salvar}" method="post">
 		<input type="hidden" name="usuario.id" value="${usuario?.id}" /> 
@@ -15,9 +15,13 @@
 			value="${usuario?.senha}" class="form-control" /> <br /> 
 		
 		<input type="text" name="usuario.nome" placeholder="Nome"
-			value="${usuario?.nome}" class="form-control" /> <br /> <br /> <br />
+			value="${usuario?.nome}" class="form-control" /> <br />
 		
-		<input type="submit" value="Salvar" class="link" /> 
-		<a href="@{Principal.iniciar}" class="link">Cancelar</a>
+		<input type="submit" value="Salvar" class="btn btn-primary" /> 
+		<a href="@{Principal.iniciar}" class="btn btn-primary">Cancelar</a> <br /> <br /> <br />
+		
+		<p style="font-size: 15px;">Já possui uma conta? 
+			<a style="font-size: 15px; color: blue" href="@{Logins.login}">Entrar</a>
+		</p>
 	</form>
 </div>

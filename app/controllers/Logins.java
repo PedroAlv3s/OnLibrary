@@ -11,7 +11,7 @@ public class Logins extends Controller {
 	}
 	
 	public static void logar(String nome, String senha) {
-		Usuario usuario = Usuario.find("lower(nome) = ?1 AND lower(senha) = ?2",
+		Usuario usuario = Usuario.find("nome = ?1 AND senha = ?2",
 				nome, Crypto.passwordHash(senha)).first();
 		
 		if(usuario == null) {
@@ -19,13 +19,13 @@ public class Logins extends Controller {
 			login();
 		} else {
 			session.put("usuario", usuario.nome);
+			session.put("tipo", usuario.tipo);
 			Principal.iniciar();
-		}
-		
+		}	
 		render();
 	}
 	
-	public static void sair() {
+	public static void logout() {
 		session.clear();
 		flash.success("Você saiu do sistema!");
 		login();

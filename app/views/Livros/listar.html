@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Listagem de Livros' /}
+#{set title:'Livros' /}
 
 <div class="container">
 	<h1>Livros</h1>
@@ -7,9 +7,9 @@
 	<form action="@{Livros.listar}">
 		<div class="row">
 			<div class="col-10">
-				<input style="width: 940px;" type="text" name="termo" placeholder="Pesquise aqui" class="form-control" />
+				<input type="text" name="termo" placeholder="Pesquise aqui" class="form-control" />
 			</div>
-			<input style="width: 130px; margin-left: 50px" type="submit" value="Pesquisar" class="link" />
+			<input style="width: 170px;" type="submit" value="Pesquisar" class="btn btn-primary" />
 		</div>
 	</form>
 	
@@ -30,15 +30,15 @@
 	      		<td>${livro.autor}</td>
 	      		<td>${livro.categoria.id}</td>
 	      		<td>
-	      			<a href="@{Livros.detalhar(livro.id)}" class="link">DETALHAR</a>
-	      			<a href="@{Livros.editar(livro.id)}" class="link">EDITAR</a>
-	      			<a href="@{Livros.remover(livro.id)}" class="link">REMOVER</a>
+	      			<a href="@{Livros.detalhar(livro.id)}" class="btn btn-primary">Detalhar</a>
+	      			<a href="@{Livros.editar(livro.id)}" class="btn btn-primary">Editar</a>
+	      			<a href="@{Livros.remover(livro.id)}" class="btn btn-primary">Remover</a>
 	      		</td>
 	      	</tr>
 	      	#{/list}
 		</tbody>
 	</table>
 	
-	<a href="@{Livros.cadastrar}" class="link">Novo Livro</a>
-	<a href="@{Principal.iniciar}" class="link">Voltar</a>
+	<a href="@{Livros.cadastrar}" class="btn btn-primary">Novo</a>
+	<a href="@{Principal.iniciar}" class="btn btn-primary">Voltar</a>
 </div>

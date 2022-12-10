@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Detalhamento de Livros' /}
+#{set title: '' /}
 
 <div class="container">
 	<h3>${livro.nome}</h3>
@@ -12,5 +12,5 @@
 	<p>Páginas: ${livro.qtdPaginas}</p>
 
 	<a class="pdf" href="/public/files/JavaPOO.pdf" download>Baixar PDF</a>
-	<a href="@{Livros.listar}" class="link">Livros</a>
+	<a href="@{Livros.listar}" class="btn btn-primary">Livros</a>
 </div>

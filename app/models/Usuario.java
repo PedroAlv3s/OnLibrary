@@ -32,4 +32,8 @@ public class Usuario extends Model {
 	public void ativar() {
 		status = Status.ativo;
 	}
+	
+	public void acharPeloNome(String nome) {
+		this.nome = nome;
+	}
 }
