@@ -28,6 +28,12 @@ tr {
 	text-decoration: none;
 }
 
+/*NAVEGAÇÃO*/
+
+.nav-item {
+	margin-left: 30px;
+}
+
 /*FORMULÁRIOS*/
 
 .cadastro {
@@ -35,7 +41,7 @@ tr {
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 80px;
+	margin-top: 50px;
 	align-items: center;
 	justify-content: center;
 }
@@ -82,6 +88,5 @@ tr {
 	height: 30px;
 }
 
-.nav-item {
-	margin-left: 30px;
-}
+/*MENSAGENS FLASH*/
+

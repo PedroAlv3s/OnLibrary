@@ -5,7 +5,7 @@
 	<br />
 	<h1>Cadastro</h1>
 	<br />
-	<form action="@{Usuarios.salvar}" method="post">
+	<form action="@{Cadastros.salvar}" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="usuario.id" value="${usuario?.id}" /> 
 		
 		<input type="email" name="usuario.email" placeholder="E-mail"
@@ -17,6 +17,12 @@
 		<input type="text" name="usuario.nome" placeholder="Nome"
 			value="${usuario?.nome}" class="form-control" /> <br />
 		
+		<input type="file" name="fotoPerfil" accept=".jpg, .png" class="form-control" /> <br />
+		
+		#{if usuario?.id}
+			<pan><img src="./imagensUploads/${usuario.nomeFoto}" /></pan>
+		#{/if}
+				
 		<input type="submit" value="Salvar" class="btn btn-primary" /> 
 		<a href="@{Principal.iniciar}" class="btn btn-primary">Cancelar</a> <br /> <br /> <br />
 		

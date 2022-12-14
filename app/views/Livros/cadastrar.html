@@ -2,18 +2,18 @@
 #{set title: 'Cadastro de Livro' /}
 
 <div class="cadastro">
-	<h3>CADASTRO</h3>
+	<h1>CADASTRO</h1>
 	<br />
 	<form action="@{Livros.salvar}" method="post">
 		<input type="hidden" name="livro.id" value="${livro?.id}" /> 
 		
-		<input type="text" name="livro.nome" value="${livro?.nome}" placeholder="  Nome" class="form-control" />
+		<input type="text" name="livro.nome" value="${livro?.nome}" placeholder="Nome" class="form-control" />
 		<br />
 		
-		<input type="text" name="livro.autor"value="${livro?.autor}" placeholder="  Autor" class="form-control" /> 
+		<input type="text" name="livro.autor"value="${livro?.autor}" placeholder="Autor" class="form-control" /> 
 		<br />
 		
-		<input type="text" name="livro.idioma" value="${livro?.idioma}" placeholder="  idioma" class="form-control" /> 
+		<input type="text" name="livro.idioma" value="${livro?.idioma}" placeholder="Idioma" class="form-control" /> 
 		<br />
 		 
 		<select name="livro.categoria.id" class="form-select" aria-label="Default select example">
@@ -27,7 +27,7 @@
 		<input type="date" name="livro.dataPublicacao" value="${livro?.dataPublicacao}" class="form-control" /> 
 		<br /> 
 		
-		<input type="number" name="livro.qtdPaginas" value="${livro?.qtdPaginas}" class="form-control" /> 
+		<input type="number" name="livro.qtdPaginas" value="${livro?.qtdPaginas}" placeholder="Quantidade de páginas" class="form-control" /> 
 		<br />
 		
 		<input type="submit" value="Salvar" class="btn btn-primary" />

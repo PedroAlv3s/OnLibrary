@@ -1,5 +1,7 @@
 package models;
 
+import java.io.File;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +14,7 @@ public class Usuario extends Model {
 	public String email;
 	public String senha;
 	public String nome;
+	public String nomeFoto;
 	public int livrosBaixados;
 	
 	@Enumerated(EnumType.STRING)
@@ -21,7 +24,7 @@ public class Usuario extends Model {
 	public Status status;
 	
 	public Usuario() {
-		//tipo = tipo.normal;
+		tipo = tipo.leitor;
 		status = status.ativo;
 	}
 	

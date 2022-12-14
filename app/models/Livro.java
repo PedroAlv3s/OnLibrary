@@ -18,10 +18,9 @@ public class Livro extends Model {
 	public String autor;
 	public String idioma;
 	public int qtdPaginas;
-	
 	public Categoria categoria;
 	
-	//@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	public Date dataPublicacao;
 	
 	@Enumerated(EnumType.STRING)

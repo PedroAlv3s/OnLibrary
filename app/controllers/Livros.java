@@ -26,7 +26,7 @@ public class Livros extends Controller {
 		long quantidade = Livro.count("nome = ?1 AND status = ?2", livro.nome, Status.ativo);
 		
 		if(quantidade == 0) {
-			//livro.dataPublicacao = new Date();
+			livro.dataPublicacao = new Date();
 			livro.save();
 			flash.success("Livro cadastrado com sucesso!");
 		} else {
@@ -57,12 +57,14 @@ public class Livros extends Controller {
 		render(livro);
 	}
 	
+	@Adiministrador
 	public static void editar(Long id) {
 		List<Categoria> categoria = Categoria.findAll();
 		Livro livro = Livro.findById(id);
 		renderTemplate("Livros/cadastrar.html", livro, categoria);
 	}
 	
+	@Adiministrador
 	public static void remover(Long id) {
 		Livro livro = Livro.findById(id);
 		livro.inativar();

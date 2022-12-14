@@ -1,11 +1,19 @@
 package security;
 
+import controllers.Cadastros;
 import controllers.Logins;
 import models.TipoUsuario;
 import play.mvc.Before;
 import play.mvc.Controller;
 
 public class Seguranca extends Controller {
+	
+	@Before
+	static void cadastro() {
+		if(session.get("usuario") == null) {
+			Cadastros.cadastrar();
+		}
+	}
 	
 	@Before
 	static void autenticar() {

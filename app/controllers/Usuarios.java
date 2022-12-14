@@ -1,10 +1,17 @@
 package controllers;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.text.Document;
+
 import models.Status;
 import models.Usuario;
+import play.data.validation.Valid;
+import play.db.jpa.GenericModel;
+import play.libs.Crypto;
 import play.mvc.Controller;
 import play.mvc.With;
 import security.Adiministrador;
@@ -12,26 +19,9 @@ import security.Seguranca;
 
 @With(Seguranca.class)
 public class Usuarios extends Controller {
-	
-	public static void cadastrar() {
-		render();
-	}
-	
+
 	public static void perfil() {
 		render();
-	}
-	
-	public static void salvar(Usuario usuario) {
-		long quantidade = Usuario.count("lower(nome) = ?1 and status = ?2", usuario.nome, Status.ativo);
-		
-		if(quantidade == 0) {
-			usuario.save();
-			flash.success("Usuário cadastrado com sucesso!");
-		} else {
-			flash.error("Nome de usuário já existe no sistema, tente outro nome!");
-			cadastrar();
-		}
-		Principal.iniciar();
 	}
 	
 	@Adiministrador
@@ -51,18 +41,21 @@ public class Usuarios extends Controller {
 		render(usuario, termo);
 	}
 	
+	@Adiministrador
 	public static void detalhar(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		render(usuario);
 	}
 	
+	@Adiministrador
 	public static void editar(Long id) {
 		Usuario usuario = Usuario.findById(id);
-		renderTemplate("Usuarios/cadastrar.html", usuario);
+		renderTemplate("Cadastros/cadastrar.html", usuario);
 		flash.success("Edição feita com sucesso!");
 		Principal.iniciar();
 	}
 	
+	@Adiministrador
 	public static void remover(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		usuario.inativar();

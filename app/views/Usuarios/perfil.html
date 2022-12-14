@@ -1,10 +1,13 @@
 #{extends 'main.html' /}
-#{set title:'Perfil' /}
+#{set title:'nLiPerfil' /}
 
 <div class="perfil">
+	#{if nomeFoto}
+		<span>><img src="${usuario.nomeFoto}" /></span
+	#{/if}
 	<h3>${session.get('usuario')}</h3>
 	
-	<input type="file" name="" />
 	<p>Nome: ${session.get('usuario')}</p>
-	<p>Você é um <b>${session.get('tipo')}</b></p
+	<p>E-mail: ${session.get('email')}</p>
+	<p>Você é um <b>${session.get('tipo')}</b></p>
 </div>
