@@ -24,27 +24,23 @@
 			    		<li class="nav-item">
 			      			<a class="nav-link active" aria-current="page" href="@{Principal.iniciar()}">Recentes</a>
 					    </li>
-						#{if session.get('usuario')}				
+						#{if session.get('usuario')}
 							<li class="nav-item">
 							  	<a class="nav-link" href="@{Livros.listar()}">Livros</a>
 						    </li>
+						    #{if session.get('tipo') == session.get('adm')}
+							    <li class="nav-item">
+								  	<a class="nav-link" href="@{Usuarios.listar()}">Usuários</a>
+							    </li>
+							#{/if}
 						    <li class="nav-item">
 						      	<a class="nav-link" href="@{Usuarios.perfil()}">
-						         	${session.get('usuario')} <i class="bi bi-arrow-up-right-square"></i>
-						     	 </a>
-						    </li>
-						    <li class="nav-item">
-						      	<a class="nav-link" href="@{Logins.logout()}">
-						         	Sair <i class="bi bi-arrow-up-right-square"></i>
-						     	 </a>
+						         	Perfil <i class="bi bi-arrow-up-right-square"></i>
+						     	</a>
 						    </li>
 					    #{/if}
 					</ul>
 					<ul class="navbar-nav">
-						#{if session.get('usuario')}
-							<
-					    #{/if}
-					    
 						#{if !session.get('usuario')}
 						    <li class="nav-item">
 							  	<a class="nav-link" href="@{Logins.login()}">Login</a>
@@ -72,10 +68,10 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			#{/if}
-	        
-	        #{doLayout /}
         </div>
-       
+        
+       	#{doLayout /}
+      	
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" 
         		type="text/javascript" charset="${_response_encoding}">
         </script>

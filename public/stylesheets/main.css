@@ -12,13 +12,15 @@
 
 /*CONTEÚDO DA PÁGINA INICIAL*/
 
-.container {
-	width: 100%;
-	min-height: 100vh;
+.inicio {
+	width: 1000px;
+	min-height: 80vh;
 	display: block;
 	align-items: center;
 	justify-content: center;
-	
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*LISTAS*/
@@ -90,3 +92,10 @@ tr {
 
 /*MENSAGENS FLASH*/
 
+.mensagens {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 500px;
+}

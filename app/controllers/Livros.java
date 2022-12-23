@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -10,20 +11,37 @@ import models.Status;
 import models.Usuario;
 import play.mvc.Controller;
 import play.mvc.With;
-import security.Adiministrador;
+import security.Administrador;
 import security.Seguranca;
 
 @With(Seguranca.class)
 public class Livros extends Controller {
 	
-	@Adiministrador
+	@Administrador
 	public static void cadastrar() {
 		List<Categoria> categorias = Categoria.findAll();
 		render(categorias);
 	}
-
-	public static void salvar(Livro livro) {
-		long quantidade = Livro.count("nome = ?1 AND status = ?2", livro.nome, Status.ativo);
+	
+	@Administrador
+	public static void cadastrarCategoria() {
+		render();
+	}
+	
+	public static void salvarCategoria(Categoria categoria) {
+		long quantidade = Categoria.count("categoria = ?1", categoria.categoria);
+		
+		if(quantidade == 0) {
+			categoria.save();
+			flash.success("Categoria salva com sucesso!");
+		} else {
+			flash.error("A categoria já existe no sistema, tente outra!");
+			cadastrarCategoria();
+		}
+	}
+	
+	public static void salvar(Livro livro, File imagemLivro) {
+		long quantidade = Livro.count("nome = ?1 OR id <> ?2 AND status = ?3", livro.nome, livro.id, Status.ativo);
 		
 		if(quantidade == 0) {
 			livro.dataPublicacao = new Date();
@@ -33,7 +51,7 @@ public class Livros extends Controller {
 			flash.error("Nome do livro já existe no sistema, tente outro nome!");
 			cadastrar();
 		}
-		Principal.iniciar();
+		listar();
 	}
 	
 	public static void listar() {
@@ -53,18 +71,19 @@ public class Livros extends Controller {
 	}
 	
 	public static void detalhar(Long id) {
+		List<Categoria> categoria = Categoria.findById(id);
 		Livro livro = Livro.findById(id);
-		render(livro);
+		render(livro, categoria);
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void editar(Long id) {
-		List<Categoria> categoria = Categoria.findAll();
-		Livro livro = Livro.findById(id);
-		renderTemplate("Livros/cadastrar.html", livro, categoria);
+		List<Categoria> categorias = Categoria.findAll();
+		Livro l = Livro.findById(id);
+		renderTemplate("Livros/cadastrar.html", l, categorias);
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void remover(Long id) {
 		Livro livro = Livro.findById(id);
 		livro.inativar();

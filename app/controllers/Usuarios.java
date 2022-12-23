@@ -14,7 +14,7 @@ import play.db.jpa.GenericModel;
 import play.libs.Crypto;
 import play.mvc.Controller;
 import play.mvc.With;
-import security.Adiministrador;
+import security.Administrador;
 import security.Seguranca;
 
 @With(Seguranca.class)
@@ -24,7 +24,7 @@ public class Usuarios extends Controller {
 		render();
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void listar() {
 		String termo = params.get("termo");
 		List<Usuario> usuario = Collections.EMPTY_LIST;
@@ -41,13 +41,13 @@ public class Usuarios extends Controller {
 		render(usuario, termo);
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void detalhar(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		render(usuario);
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void editar(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		renderTemplate("Cadastros/cadastrar.html", usuario);
@@ -55,7 +55,7 @@ public class Usuarios extends Controller {
 		Principal.iniciar();
 	}
 	
-	@Adiministrador
+	@Administrador
 	public static void remover(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		usuario.inativar();

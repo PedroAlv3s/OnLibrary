@@ -16,7 +16,7 @@ public class Cadastros extends Controller {
 	public static void salvar(Usuario usuario, File fotoPerfil) {
 		fotoPerfil.renameTo(new File("./imagensUploads/" + fotoPerfil.getName()));
 		
-		long quantidade = Usuario.count("lower(nome) = ?1 and status = ?2", usuario.nome, Status.ativo);
+		long quantidade = Usuario.count("lower(nome) = ?1 AND status = ?2", usuario.nome, Status.ativo);
 		
 		if(quantidade == 0) {
 			usuario.nomeFoto = fotoPerfil.getName();
@@ -27,7 +27,7 @@ public class Cadastros extends Controller {
 			flash.error("Nome de usuário já existe no sistema, tente outro nome!");
 			Cadastros.cadastrar();
 		}
-		Principal.iniciar();
+		Logins.login();
 	}
 	
 }

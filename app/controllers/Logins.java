@@ -19,9 +19,11 @@ public class Logins extends Controller {
 			login();
 		} else {
 			session.put("usuario", usuario.nome);
+			session.put("email", usuario.email);
 			session.put("tipo", usuario.tipo);
+			session.put("adm", usuario.tipo.administrador);
 			Principal.iniciar();
-		}	
+		}
 	}
 	
 	public static void logout() {

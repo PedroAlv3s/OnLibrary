@@ -17,8 +17,7 @@ public class Inicializador extends Job {
 			adimin.email = "pedro203@gmail.com";
 			adimin.senha = Crypto.passwordHash("pedroBanana");
 			adimin.nome = "Pedro Alves";
-			adimin.livrosBaixados = 3;
-			adimin.tipo = TipoUsuario.adiministrador;
+			adimin.tipo = TipoUsuario.administrador;
 			adimin.save();
 		}
 		
@@ -51,5 +50,6 @@ public class Inicializador extends Job {
 			categoria7.categoria = "Educacional";
 			categoria7.save();
 		}
+		System.out.println("O banco foi populado!");
 	}
 }

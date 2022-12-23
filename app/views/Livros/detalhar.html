@@ -1,16 +1,17 @@
 #{extends 'main.html' /}
-#{set title: '' /}
+#{set title: 'Detalhamento de livro - OnLibrary' /}
 
 <div class="container">
 	<h3>${livro.nome}</h3>
 	
 	<p>Nome: ${livro.nome}</p>
 	<p>Autor: ${livro.autor}</p>
-	<p>Autor: ${livro.categoria.id}</p>
+	<p>Categoria: ${livro.categoria}</p>
 	<p>Publicação: ${livro.dataPublicacao.format('dd/MM/yyyy')}</p>
 	<p>Idioma: ${livro.idioma}</p>
 	<p>Páginas: ${livro.qtdPaginas}</p>
-
-	<a class="pdf" href="/public/files/JavaPOO.pdf" download>Baixar PDF</a>
-	<a href="@{Livros.listar}" class="btn btn-primary">Livros</a>
+	
+	#{if session.get('usuario')}
+		<a class="pdf" href="/public/files/JavaPOO.pdf" download>Baixar PDF</a>
+	#{/if}
 </div>

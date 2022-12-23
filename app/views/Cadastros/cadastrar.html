@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Cadastro de Usuário' /}
+#{set title:'Cadastro - OnLibrary' /}
 
 <div class="cadastro">
 	<br />
@@ -20,14 +20,15 @@
 		<input type="file" name="fotoPerfil" accept=".jpg, .png" class="form-control" /> <br />
 		
 		#{if usuario?.id}
-			<pan><img src="./imagensUploads/${usuario.nomeFoto}" /></pan>
+			<span><img src="./imagensUploads/${usuario.nomeFoto}" /></span>
 		#{/if}
-				
-		<input type="submit" value="Salvar" class="btn btn-primary" /> 
-		<a href="@{Principal.iniciar}" class="btn btn-primary">Cancelar</a> <br /> <br /> <br />
+		
+		<div class="d-grid gap-2">
+			<input type="submit" value="Salvar" class="btn btn-primary" /> <br /> <br />
+		</div>
 		
 		<p style="font-size: 15px;">Já possui uma conta? 
-			<a style="font-size: 15px; color: blue" href="@{Logins.login}">Entrar</a>
+			<a style="font-size: 15px; text-decoration: none;" href="@{Logins.login}">Entrar</a>
 		</p>
 	</form>
 </div>

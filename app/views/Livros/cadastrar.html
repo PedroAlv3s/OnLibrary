@@ -1,35 +1,59 @@
 #{extends 'main.html' /}
-#{set title: 'Cadastro de Livro' /}
+#{set title: 'Cadastro de livros - OnLibrary' /}
 
 <div class="cadastro">
 	<h1>CADASTRO</h1>
 	<br />
 	<form action="@{Livros.salvar}" method="post">
-		<input type="hidden" name="livro.id" value="${livro?.id}" /> 
+		<input type="hidden" name="livro.id" value="${l?.id}" /> 
 		
-		<input type="text" name="livro.nome" value="${livro?.nome}" placeholder="Nome" class="form-control" />
+		<input type="text" name="livro.nome" value="${l?.nome}" placeholder="Nome" class="form-control" />
 		<br />
 		
-		<input type="text" name="livro.autor"value="${livro?.autor}" placeholder="Autor" class="form-control" /> 
+		<input type="text" name="livro.autor"value="${l?.autor}" placeholder="Autor" class="form-control" /> 
 		<br />
 		
-		<input type="text" name="livro.idioma" value="${livro?.idioma}" placeholder="Idioma" class="form-control" /> 
-		<br />
-		 
-		<select name="livro.categoria.id" class="form-select" aria-label="Default select example">
-			<option>Categorias</option>
-			#{list items:categorias, as:'cat'}
-				<option value="${cat.id}" ${cat.id == livro?.categoria?.id ? 'selected' : ''}>${cat}</option>
-			#{/list}
-		</select>
-		<br /> 
-		
-		<input type="date" name="livro.dataPublicacao" value="${livro?.dataPublicacao}" class="form-control" /> 
-		<br /> 
-		
-		<input type="number" name="livro.qtdPaginas" value="${livro?.qtdPaginas}" placeholder="Quantidade de páginas" class="form-control" /> 
+		<input type="text" name="livro.idioma" value="${l?.idioma}" placeholder="Idioma" class="form-control" /> 
 		<br />
 		
-		<input type="submit" value="Salvar" class="btn btn-primary" />
+		<div class="row g-3">
+			<div class="col-auto">
+				<select name="livro.categoria.id" class="form-select">
+					<option>Categorias:</option>
+					#{list items: categorias, as:'cat'}
+						<option value="${cat.id}" ${cat.id == l?.categoria?.id ? 'selected' : ''}>
+							${cat}
+						</option>
+					#{/list}
+				</select>
+				<br />
+			</div>
+			
+			<div style="margin-left: 5px" class="col-auto">
+				<input type="number" name="livro.qtdPaginas" value="${l?.qtdPaginas}" placeholder="Quantidade de páginas" class="form-control" /> 
+				<br />
+			</div>
+		</div>
+		
+		<div class="row g-4">
+			<div class="col-auto">
+				<label>Data de publicação:</label>
+				<input type="date" name="livro.dataPublicacao" value="${l?.dataPublicacao}" class="form-control" /> 
+				<br />
+			</div>
+			<div style="margin-left: 15px" class="col-auto">	
+				<label>Data do sistema:</label>
+				<input type="date" name="livro.dataSistema" value="${l?.dataSistema}" class="form-control" /> 
+				<br />
+			</div>
+		</div>
+		
+		<input type="file" name="imagemLivro" accept=".jpg, .png" class="form-control" />
+		<br />
+		
+		<div class="d-grid gap-2">
+			<input type="submit" value="Salvar" class="btn btn-primary" />
+		</div>
+		
 	</form>
 </div>

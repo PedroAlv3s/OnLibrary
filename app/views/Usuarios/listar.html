@@ -1,15 +1,15 @@
 #{extends 'main.html' /}
-#{set title:'Listagem de Usuários' /}
+#{set title:'Listagem de usuários - OnLibrary' /}
 
 <div class="container">
-	<h1>Lista de Usuários</h1>
+	<br />
+	<h1 style="text-align: center">Usuários</h1>
+	<br />
 	
 	<form action="@{Usuarios.listar}">
-		<div class="row">
-			<div class="col-10">
-				<input type="text" name="termo" placeholder="Pesquise aqui" class="form-control" />
-			</div>
-			<input type="submit" value="Pesquisar" class="btn btn-primary" />
+		<div class="input-group mb-3">
+		  <input type="text" class="form-control" name="termo" placeholder="Pesquise aqui" aria-label="Recipient's username" aria-describedby="button-addon2">
+		  <input class="btn btn-outline-secondary" value="Pesquisar" type="submit" id="button-addon2" />
 		</div>
 	</form>
 	
@@ -28,15 +28,15 @@
 	      		<td>${usuario.nome}</td>
 	      		<td>${usuario.email}</td>
 	      		<td>
-	      			<a href="@{Usuarios.detalhar(usuario.id)}" class="btn btn-primary">Detalhar</a>
-	      			<a href="@{Usuarios.editar(usuario.id)}" class="btn btn-primary">Editar</a>
-	      			<a href="@{Usuarios.remover(usuario.id)}" class="btn btn-primary">Remover</a>
+	      			<a href="@{Usuarios.detalhar(usuario.id)}" class="btn btn-secondary">Detalhar</a>
+	      			<a href="@{Usuarios.editar(usuario.id)}" class="btn btn-secondary">Editar</a>
+	      			<a href="@{Usuarios.remover(usuario.id)}" class="btn btn-danger">Remover</a>
 	      		</td>
 	      	</tr>
 	      	#{/list}
 		</tbody>
 	</table>
-	
-	<a href="@{Cadastros.cadastrar}" class="btn btn-primary">Novo Usuário</a>
-	<a href="@{Principal.iniciar}" class="btn btn-primary">Voltar</a>
+	<div class="d-grid gap-2">
+		<a href="@{Cadastros.cadastrar}" class="btn btn-secondary">Adicionar novo usuário no sistema</a>
+	</div>
 </div>

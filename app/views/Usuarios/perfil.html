@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'nLiPerfil' /}
+#{set title:'Perfil - OnLibrary' /}
 
 <div class="perfil">
 	#{if nomeFoto}
@@ -9,5 +9,7 @@
 	
 	<p>Nome: ${session.get('usuario')}</p>
 	<p>E-mail: ${session.get('email')}</p>
-	<p>Você é um <b>${session.get('tipo')}</b></p>
+	<p>Você é tipo <b>${session.get('tipo')}</b></p>
+	
+	<a href="@{Logins.logout}">Sair</a>
 </div>

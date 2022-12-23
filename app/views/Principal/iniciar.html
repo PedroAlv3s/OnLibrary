@@ -1,6 +1,19 @@
 #{extends 'main.html' /}
-#{set title:'OnLibrary' /}
+#{set title:'Início - OnLibrary' /}
 
-<div class="">
+<div class="inicio">
+	<h2>Recentes</h2>
 	
+	<table>
+		#{list items: livros, as: 'livro'}
+		<tr>
+			<td>
+				<a>
+					<img src="${livro.imagemLivro}"/>
+				</a>
+			</td>
+			<td>${livro.nome}</td>
+		</tr>
+		#{/list}
+	</table>
 </div>
