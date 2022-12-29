@@ -2,12 +2,14 @@ package controllers;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import javax.swing.text.Document;
 
 import models.Status;
+import models.TipoUsuario;
 import models.Usuario;
 import play.data.validation.Valid;
 import play.db.jpa.GenericModel;
@@ -21,6 +23,11 @@ import security.Seguranca;
 public class Usuarios extends Controller {
 
 	public static void perfil() {
+		render();
+	}
+	
+	@Administrador
+	public static void edicaoAdmin() {
 		render();
 	}
 	
@@ -48,11 +55,19 @@ public class Usuarios extends Controller {
 	}
 	
 	@Administrador
+	public static void adminEditar(Long id) {
+		Usuario usuario = Usuario.findById(id);
+		List<TipoUsuario> tipos = Arrays.asList(TipoUsuario.values());
+		renderTemplate("Cadastros/edicaoAdmin.html", usuario, tipos);
+		flash.success("Edição feita com sucesso!");
+		Usuarios.listar();
+	}
+	
 	public static void editar(Long id) {
 		Usuario usuario = Usuario.findById(id);
 		renderTemplate("Cadastros/cadastrar.html", usuario);
 		flash.success("Edição feita com sucesso!");
-		Principal.iniciar();
+		perfil();
 	}
 	
 	@Administrador

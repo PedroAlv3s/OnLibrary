@@ -1,6 +1,5 @@
 package models;
 
-import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -14,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import play.data.validation.Required;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
@@ -23,17 +24,30 @@ public class Livro extends Model {
     @GeneratedValue
     public Long id;
 	
+	@Required
 	public String nome;
+	
+	@Required
 	public String autor;
+	
+	@Required
 	public String idioma;
+	
+	@Required
 	public int qtdPaginas;
-	public File imagemLivro;
+	
+	public Blob imagemLivro;
 	
 	@ManyToOne
 	public Categoria categoria;
 	
+	@Required
 	@Temporal(TemporalType.DATE)
 	public Date dataPublicacao;
+	
+	@Required
+	@Temporal(TemporalType.DATE)
+	public Date dataSistema;
 	
 	@Enumerated(EnumType.STRING)
 	public Status status;

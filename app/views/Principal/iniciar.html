@@ -6,14 +6,45 @@
 	
 	<table>
 		#{list items: livros, as: 'livro'}
-		<tr>
-			<td>
-				<a>
-					<img src="${livro.imagemLivro}"/>
-				</a>
-			</td>
-			<td>${livro.nome}</td>
-		</tr>
+		  <!-- First Photo Grid-->
+		  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+		    <div class="w3-quarter">
+		      <img src="/public/images/Java.jfif" alt="Sandwich" style="width:100%">
+		      <h3>${livro.nome}</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/Python.jpg" alt="Steak" style="width:100%">
+		      <h3>Introdução ao Python</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/PequenoPrincipe.jpg" alt="Cherries" style="width:100%">
+		      <h3>O Pequeno Príncipe</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/ladrona.jfif" alt="Pasta and Wine" style="width:100%">
+		      <h3>A Menina Que Roubava Livros</h3>
+		    </div>
+		  </div>
+		  
+		  <!-- Second Photo Grid-->
+		  <div class="w3-row-padding w3-padding-16 w3-center">
+		    <div class="w3-quarter">
+		      <img src="/public/images/es.jfif" alt="Popsicle" style="width:100%">
+		      <h3>Engenharia de Software</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/Alienista.jfif" alt="Salmon" style="width:100%">
+		      <h3>O Alienista</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/domCasmurro.jfif" alt="Sandwich" style="width:100%">
+		      <h3>Dom Casmurro</h3>
+		    </div>
+		    <div class="w3-quarter">
+		      <img src="/public/images/vidasSECAS.jfif" alt="Croissant" style="width:100%">
+		      <h3>Vidas Secas</h3>
+		    </div>
+		  </div>
 		#{/list}
 	</table>
 </div>

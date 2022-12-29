@@ -18,10 +18,12 @@ public class Logins extends Controller {
 			flash.error("Nome ou senha inválidos!");
 			login();
 		} else {
+			session.put("idUsuario", usuario.id);
 			session.put("usuario", usuario.nome);
 			session.put("email", usuario.email);
 			session.put("tipo", usuario.tipo);
 			session.put("adm", usuario.tipo.administrador);
+			flash.success("Você fez login no sistema!");
 			Principal.iniciar();
 		}
 	}

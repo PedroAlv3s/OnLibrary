@@ -3,13 +3,13 @@
 
 <div class="perfil">
 	#{if nomeFoto}
-		<span>><img src="${usuario.nomeFoto}" /></span
+		<span>><img src="${usuario.nomeFoto}" /></span>
 	#{/if}
 	<h3>${session.get('usuario')}</h3>
 	
-	<p>Nome: ${session.get('usuario')}</p>
 	<p>E-mail: ${session.get('email')}</p>
-	<p>Você é tipo <b>${session.get('tipo')}</b></p>
+	<p>Você é tipo <b><i>${session.get('tipo')}</i></b></p>
 	
+	<a href="@{Usuarios.editar(session.get('idUsuario'))}">Editar Perfil</a>
 	<a href="@{Logins.logout}">Sair</a>
 </div>
