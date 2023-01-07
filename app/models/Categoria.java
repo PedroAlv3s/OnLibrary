@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Model;
 
 @Entity
@@ -14,6 +16,8 @@ public class Categoria extends Model {
     @GeneratedValue
     public Long id;
     
+	@Unique(message = "Essa categoria já existe!")
+	@Required(message = "Este campo é obrigatório!")
 	public String categoria;
 	
 	@Override

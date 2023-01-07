@@ -13,12 +13,12 @@ public class Inicializador extends Job {
 	@Override
 	public void doJob() throws Exception {
 		if(Usuario.count() == 0) {
-			Usuario adimin = new Usuario();
-			adimin.email = "pedro203@gmail.com";
-			adimin.senha = Crypto.passwordHash("pedroBanana");
-			adimin.nome = "Pedro Alves";
-			adimin.tipo = TipoUsuario.administrador;
-			adimin.save();
+			Usuario admin = new Usuario();
+			admin.email = "pedro203@gmail.com";
+			admin.senha = Crypto.passwordHash("pedroBanana");
+			admin.nome = "Pedro Alves";
+			admin.tipo = TipoUsuario.administrador;
+			admin.save();
 		}
 		
 		if(Categoria.count() == 0) {

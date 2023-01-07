@@ -1,10 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Perfil - OnLibrary' /}
 
-<div class="perfil">
-	#{if nomeFoto}
-		<span>><img src="${usuario.nomeFoto}" /></span>
-	#{/if}
+<div class="perfil">	
+	<img src="@{Usuarios.uploadFoto(session.get('idUsuario'))}" class="userImage" alt="..." />
+	
 	<h3>${session.get('usuario')}</h3>
 	
 	<p>E-mail: ${session.get('email')}</p>

@@ -1,5 +1,6 @@
 package models;
 
+import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
@@ -24,30 +26,32 @@ public class Livro extends Model {
     @GeneratedValue
     public Long id;
 	
-	@Required
+	@Unique(message = "Esse nome já existe!")
+	@Required(message = "Este campo é obrigatório!")
 	public String nome;
 	
-	@Required
+	@Required(message = "Este campo é obrigatório!")
 	public String autor;
 	
-	@Required
+	@Required(message = "Este campo é obrigatório!")
 	public String idioma;
 	
-	@Required
+	@Required(message = "Este campo é obrigatório!")
 	public int qtdPaginas;
-	
-	public Blob imagemLivro;
 	
 	@ManyToOne
 	public Categoria categoria;
 	
-	@Required
+	@Required(message = "Este campo é obrigatório!")
 	@Temporal(TemporalType.DATE)
 	public Date dataPublicacao;
 	
-	@Required
+	@Required(message = "Este campo é obrigatório!")
 	@Temporal(TemporalType.DATE)
 	public Date dataSistema;
+	
+	public Blob imagemLivro;
+	public Blob pdfLivro;
 	
 	@Enumerated(EnumType.STRING)
 	public Status status;

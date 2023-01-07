@@ -1,10 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Detalhamento de usuário - OnLibrary' /}
 
-<div class="container">
-	<h3>${usuario.nome}</h3>
+<div class="perfil">
+	<h3>${user.nome}</h3>
 	
-	<img src="" alt="Foto do perfil do usuário." />
-	<p>Nome: ${usuario.nome}</p>
-	<p>E-mail: ${usuario.email}</p>
+	<img src="@{Usuarios.uploadFoto(session.get('idUsuario'))}" class="userImage"
+	 	alt="Foto do perfil do usuário." />
+	<p>E-mail: ${user.email}</p>
 </div>

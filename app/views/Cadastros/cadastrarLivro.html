@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title: 'Cadastro de livros - OnLibrary' /}
+
+<div class="cadastro">
+	<h1>CADASTRO</h1>
+	<br />
+	<form action="@{Cadastros.salvarLivro}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="livro.id" value="${l?.id}" /> 
+		
+		<span class="erros">#{error 'livro.nome' /}</span>
+		<input type="text" name="livro.nome" value="${l?.nome}" placeholder="Nome" 
+			class="form-control" />
+		<br />
+		
+		<span class="erros">#{error 'livro.autor' /}</span>
+		<input type="text" name="livro.autor"value="${l?.autor}" placeholder="Autor" 
+			class="form-control" /> 
+		<br />
+		
+		<span class="erros">#{error 'livro.idioma' /}</span>
+		<input type="text" name="livro.idioma" value="${l?.idioma}" placeholder="Idioma" 
+			class="form-control" /> 
+		<br />
+		
+		<!-- CATEGORIAS E QUANTIDADE DE PÁGINAS -->
+		<div class="row g-2">
+			<div class="col-auto">
+				<select name="livro.categoria.id" class="form-select" style="width: 155px">
+					<option>Categorias:</option>
+					#{list items: categorias, as:'cat'}
+						<option value="${cat.id}" ${cat.id == l?.categoria?.id ? 'selected' : ''}>
+							${cat}
+						</option>
+					#{/list}
+				</select>
+				<br />
+			</div>
+			
+			<div style="margin-left: 30px" class="col-auto">
+				<span class="erros">#{error 'livro.qtdPaginas' /}</span>
+				<input type="number" name="livro.qtdPaginas" value="${l?.qtdPaginas}" 
+					placeholder="Quantidade de páginas" class="form-control" /> 
+				<br />
+			</div>
+		</div>
+		
+		<!-- CAMPOS DE DATAS -->
+		<div class="row g-2">
+			<div class="col-auto">
+				<span class="erros">#{error 'livro.dataPublicacao' /}</span>
+				<label>Data de publicação:</label>
+				<input type="date" name="livro.dataPublicacao" value="${l?.dataPublicacao}" 
+					class="form-control" style="width: 181px" /> 
+				<br />
+			</div>
+			<div style="margin-left: 30px" class="col-auto">
+				<span class="erros">#{error 'livro.dataSistema' /}</span>	
+				<label>Data do sistema:</label>
+				<input type="date" name="livro.dataSistema" value="${l?.dataSistema}" 
+					class="form-control" style="width: 181px" /> 
+				<br />
+			</div>
+		</div>
+		
+		<!-- CAMPOS DE ARQUIVOS -->
+		<div class="row g-2">
+			<div class="col-auto">
+				<label>Imagem do Livro:</label>
+				<input type="file" name="livro.imagemLivro" value="${l?.imagemLivro}"
+					accept=".jpg, .png, .jfif" class="form-control form-control-sm" style="width: 188px" /> 
+				<br />
+			</div>
+			<div style="margin-left: 15px" class="col-auto">	
+				<label>PDF do Livro:</label>
+				<input type="file" name="livro.pdfLivro" value="${l?.pdfLivro}" 
+					accept=".pdf" class="form-control form-control-sm" style="width: 188px" />
+				<br />
+			</div>
+		</div>
+		
+		<!-- BOTÃO DE SUBMIT -->
+		<div class="d-grid gap-2">
+			<input type="submit" value="Salvar" class="btn btn-primary" />
+		</div>
+	</form>
+</div>

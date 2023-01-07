@@ -1,7 +1,5 @@
 package controllers;
 
-import java.awt.Image;
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -39,8 +37,7 @@ public class Usuarios extends Controller {
 		if(termo == null || termo.isEmpty()) {
 			usuario = Usuario.find("status = ?1", Status.ativo).fetch();
 		} else {
-			usuario = Usuario.find("(lower(email) like ?1 OR lower(senha) like ?2 OR lower(nome) like ?3) AND status = ?4",
-					  "%" + termo.toLowerCase() + "%",
+			usuario = Usuario.find("(lower(email) like ?1 OR lower(nome) like ?2) AND status = ?3",
 					  "%" + termo.toLowerCase() + "%",
 					  "%" + termo.toLowerCase() + "%",
 					  Status.ativo).fetch();
@@ -65,8 +62,16 @@ public class Usuarios extends Controller {
 	
 	public static void editar(Long id) {
 		Usuario usuario = Usuario.findById(id);
-		renderTemplate("Cadastros/cadastrar.html", usuario);
+		renderTemplate("Cadastros/cadastrarUsuario.html", usuario);
 		flash.success("Edição feita com sucesso!");
+		perfil();
+	}
+	
+
+	public static void salvarEdicao(Usuario usuario) {
+		usuario.senha = Crypto.passwordHash(usuario.senha);			
+		usuario.save();
+		flash.success("Edição realizada com sucesso!");
 		perfil();
 	}
 	
@@ -77,5 +82,10 @@ public class Usuarios extends Controller {
 		usuario.save();
 		flash.success("Usuário removido com sucesso!");
 		listar();
+	}
+	
+	public static void uploadFoto(Long id) {
+		Usuario usuario = Usuario.findById(id);
+		renderBinary(usuario.fotoPerfil.getFile());
 	}
 }

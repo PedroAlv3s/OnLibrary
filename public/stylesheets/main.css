@@ -79,7 +79,7 @@ tr {
 	padding: 50px;
 }
 
-/*LOGO DA ONLIB*/
+/*IMAGENS*/
 
 .logo a:hover {
 	color: rgb(233, 233, 233);
@@ -90,7 +90,13 @@ tr {
 	height: 30px;
 }
 
-/*MENSAGENS FLASH*/
+.userImage {
+	width: 200px;
+	height: 2s00px;
+	border-radius: 50%;
+}
+
+/*MENSAGENS*/
 
 .mensagens {
 	position: relative;
@@ -98,4 +104,8 @@ tr {
 	margin-right: auto;
 	margin-top: 50px;
 	width: 500px;
+}
+
+.erros {
+	color: red;
 }

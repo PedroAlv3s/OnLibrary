@@ -3,25 +3,27 @@
 
 <div class="inicio">
 	<h2>Recentes</h2>
+	<hr class="border-bottom border-secondary"/>
+	<br />
 	
 	<table>
 		#{list items: livros, as: 'livro'}
 		  <!-- First Photo Grid-->
 		  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
 		    <div class="w3-quarter">
-		      <img src="/public/images/Java.jfif" alt="Sandwich" style="width:100%">
+		      <img src="@{Livros.uploadImagem(livro.id)}" style="width:100%">
 		      <h3>${livro.nome}</h3>
 		    </div>
 		    <div class="w3-quarter">
-		      <img src="/public/images/Python.jpg" alt="Steak" style="width:100%">
+		      <img src="/public/images/Python.jpg" style="width:100%">
 		      <h3>Introdução ao Python</h3>
 		    </div>
 		    <div class="w3-quarter">
-		      <img src="/public/images/PequenoPrincipe.jpg" alt="Cherries" style="width:100%">
+		      <img src="/public/images/PequenoPrincipe.jpg" style="width:100%">
 		      <h3>O Pequeno Príncipe</h3>
 		    </div>
 		    <div class="w3-quarter">
-		      <img src="/public/images/ladrona.jfif" alt="Pasta and Wine" style="width:100%">
+		      <img src="/public/images/ladrona.jfif" style="width:100%">
 		      <h3>A Menina Que Roubava Livros</h3>
 		    </div>
 		  </div>

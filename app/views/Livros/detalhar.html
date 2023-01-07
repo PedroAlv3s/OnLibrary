@@ -2,9 +2,10 @@
 #{set title: 'Detalhamento de livro - OnLibrary' /}
 
 <div class="container">
+	
+	<img src="@{Livros.uploadImagem(session.get('idLivro'))}"> 
 	<h3>${livro.nome}</h3>
 	
-	<p>Nome: ${livro.nome}</p>
 	<p>Autor: ${livro.autor}</p>
 	<p>Categoria: ${livro.categoria}</p>
 	<p>Publicação: ${livro.dataPublicacao.format('dd/MM/yyyy')}</p>
@@ -12,6 +13,6 @@
 	<p>Páginas: ${livro.qtdPaginas}</p>
 	
 	#{if session.get('usuario')}
-		<a class="pdf" href="/public/files/JavaPOO.pdf" download>Baixar PDF</a>
+		<a class="pdf" href="@{Livros.uploadImagem(session.get('idLivro'))}" download>Baixar PDF</a>
 	#{/if}
 </div>
